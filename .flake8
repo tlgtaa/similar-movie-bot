@@ -1,0 +1,7 @@
+[flake8]
+ignore = E501, E265, F811, PT001, DJ05, SIM113, SIM102
+max-line-length = 99
+exclude =
+      .git,
+      .vscode,
+      __pycache__
