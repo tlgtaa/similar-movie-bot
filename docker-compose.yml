@@ -1,0 +1,36 @@
+version: '3.8'
+
+x-environment-vars: &environment-vars
+  PYTHONUNBUFFERED: 1
+  PYTHONIOENCODING: utf-8
+  TERM: linux
+  BASE_URL: http://film-like.com
+  BOT_TOKEN: 1000219291:AAHC3BpIIXAg9TV3rMyxwcgxYirwNHp2Usg
+  ADMINS: 327214443
+  DATABASE_URL: postgres://postgres@similar-movie-db/postgres?sslmode=disable
+
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.local
+    environment:
+      <<: *environment-vars
+    volumes:
+      - .:/proj
+      - /proj/bin
+    depends_on:
+      - similar-movie-db
+    command: python -m src.bot
+    stdin_open: true
+    tty: true
+
+  similar-movie-db:
+    image: postgres:13.3-alpine
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+
+networks:
+  default:
+    external:
+      name: similar-movie-bot

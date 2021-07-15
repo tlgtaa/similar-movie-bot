@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pw_migrate create --schema=public --database=$DATABASE_URL --directory=migrations --auto auto

@@ -1,11 +1,16 @@
+import logging
 from typing import List
 
 from aiogram import Dispatcher
+from aiogram.utils.exceptions import BotBlocked
 
 
 async def on_startup_notify(dp: Dispatcher, users: List[str]):
     for user in users:
-        await dp.bot.send_message(user, 'Бот запущен!')
+        try:
+            await dp.bot.send_message(user, 'Бот запущен!')
+        except BotBlocked as exc:
+            logging.warning(exc)
 
 
 def rate_limit(limit: int, key=None):

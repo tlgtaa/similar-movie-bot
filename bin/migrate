@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pw_migrate migrate --schema=public --database=$DATABASE_URL --directory=migrations

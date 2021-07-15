@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pw_migrate rollback --schema=public --database=$DATABASE_URL --directory=migrations $1

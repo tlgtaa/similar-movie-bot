@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  similar-movie-db:
+    ports:
+    - 5607:5432
+    volumes:
+    - /usr/src/aviata/similar-movie-bot/db:/var/lib/posgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres

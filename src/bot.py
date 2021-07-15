@@ -6,9 +6,10 @@ from src.settings import ADMINS, API_TOKEN
 
 
 async def on_startup(dp: Dispatcher):
-    from src import handlers, middlewares
+    from src import handlers, middlewares, db
     from src.utils import on_startup_notify
 
+    dp.bot.db = db.get_manager()
     middlewares.setup(dp)
     handlers.setup(dp)
     await on_startup_notify(dp, ADMINS)
