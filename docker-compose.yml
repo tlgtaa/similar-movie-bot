@@ -1,12 +1,12 @@
-version: '3.8'
+version: "3.8"
 
 x-environment-vars: &environment-vars
   PYTHONUNBUFFERED: 1
   PYTHONIOENCODING: utf-8
   TERM: linux
   BASE_URL: http://film-like.com
-  BOT_TOKEN: 1000219291:AAHC3BpIIXAg9TV3rMyxwcgxYirwNHp2Usg
-  ADMINS: 327214443
+  BOT_TOKEN: "YOUR-BOT-TOKEN"
+  ADMINS: "YOUR-IDs"
   DATABASE_URL: postgres://postgres@similar-movie-db/postgres?sslmode=disable
 
 services:
